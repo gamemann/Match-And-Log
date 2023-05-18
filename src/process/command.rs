@@ -2,7 +2,7 @@ use std::process::{Command, Stdio};
 
 use crate::config::cfg;
 
-pub fn spawn_process(process: &cfg::Process) -> Command {
+pub fn spawn_process(process: &cfg::Process) -> &mut Command {
     let mut p = Command::new(process.command.as_str())
     .stdout(Stdio::piped())
     .stderr(Stdio::piped());

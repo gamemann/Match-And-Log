@@ -31,7 +31,13 @@ fn parse_output(pipe: std::process::ChildStdout, process_cfg: &cfg::Process)  {
             // Go through each rule.
             for rule in process_cfg.rules.iter() {
                 if parse::parse_line(rule.regex_match.as_str(), line.as_str()) {
-
+                    if let Some(ref rule_actions) = rule.actions {
+                        for action in rule_actions.iter() {
+                            match action.action_type.as_str() {
+                                "stdout" => println!("{}", line.as_str())
+                            }
+                        }
+                    }
                 }
             }
         }
