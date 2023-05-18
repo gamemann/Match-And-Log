@@ -1,0 +1,25 @@
+{
+    "debug": false,
+    "processes": [
+        {
+            "command": "test",
+            "env": [
+                {
+                    "name": "TEST_ENV",
+                    "value": "test_value"
+                }
+            ],
+            "rules": [
+                {
+                    "regex_match": "(?i)test match",
+                    "actions": [
+                        {
+                            "action_type": "stdout",
+                            "data": "extra data"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
