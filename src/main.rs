@@ -6,7 +6,8 @@ use config::cfg;
 use cmdline::parse;
 use process::command;
 
-fn main() {
+#[tokio::main]
+async fn main() {
     // Parse command line arguments.
     let args = parse::parse_arguments();
 
@@ -15,9 +16,8 @@ fn main() {
 
     // Loop through each process.
     for process in cfg.processes.iter() {
-        let new_process = command::spawn_process(process);
-
-        
-
+        command::spawn_process(process).await;
     }
+
+    std::io::stdin().read_line(&mut String::new()).unwrap();
 }

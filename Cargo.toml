@@ -10,3 +10,4 @@ clap = { version = "4.2.7", features = ["derive"] }
 regex = "1.8.1"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
+tokio = { version = "1.28.1", features = ["process", "io-std", "fs", "io-util", "rt", "full"] }
